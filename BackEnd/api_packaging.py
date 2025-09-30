@@ -8,10 +8,17 @@ import uuid
 
 router = APIRouter()
 
-# Supabase client
+# Read environment variables
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+
+# Debug: check if they’re being read correctly
+print("SUPABASE_URL:", SUPABASE_URL)
+print("SUPABASE_KEY:", SUPABASE_KEY)
+
+# Initialize Supabase client
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
 
 def generate_unique_batch_id() -> str:
     timestamp = int(time.time() * 1000)
