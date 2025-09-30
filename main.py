@@ -8,6 +8,8 @@ from BackEnd.api_storage import router as storage_router
 from BackEnd.qrReader2 import router as qr_router
 from database.db_access import init_db_pool, close_db_pool
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import os
 from dotenv import load_dotenv
 
@@ -40,9 +42,12 @@ app.include_router(p2_router)
 app.include_router(storage_router)
 app.include_router(qr_router, prefix="/api")
 
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
 @app.get("/")
-def read_root():
-    return {"message": "API is running"}
+async def root():
+    return FileResponse("FrontEnd/farmer.html")
+
 @app.on_event("startup")
 async def startup_event():
     await init_db_pool()
