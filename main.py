@@ -42,7 +42,7 @@ app.include_router(p2_router)
 app.include_router(storage_router)
 app.include_router(qr_router, prefix="/api")
 
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+app.mount("/static", StaticFiles(directory="FrontEnd"), name="static")
 
 @app.get("/")
 async def root():
