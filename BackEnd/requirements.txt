@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+web3
+qrcode
+pydantic
+psycopg2-binary
+python-multipart
+pillow
+requests
+python-dotenv
