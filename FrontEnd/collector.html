@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collector Dashboard</title>
+<link rel="stylesheet" href="static/collector.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Collector Dashboard</h1>
+  <p class="subtitle">Record collection data and generate unique batch identifier</p>
+
+  <form id="collectorForm">
+    <div class="form-group">
+      <label for="batchId">Batch ID</label>
+      <input type="text" id="batchId" name="batchId" placeholder="Enter batch identifier" required>
+    </div>
+
+    <div class="form-group">
+      <label for="speciesName">Species Name</label>
+      <input type="text" id="speciesName" name="speciesName" placeholder="Enter species name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" name="weight" step="0.01" placeholder="Enter weight" required>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="verification" name="verification">
+      <label for="verification">Verification Complete ✅</label>
+    </div>
+
+    <button type="submit" id="generateBtn" disabled>Generate Unique ID</button>
+  </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <h2>Collection Recorded Successfully ✅</h2>
+    <div class="modal-body">
+      <p>Generated Unique ID:</p>
+      <p id="generatedId" class="generated-id"></p>
+      <p><strong>Batch ID:</strong> <span id="confirmBatchId"></span></p>
+      <p><strong>Species:</strong> <span id="confirmSpecies"></span></p>
+      <p><strong>Weight:</strong> <span id="confirmWeight"></span> kg</p>
+    </div>
+    <div class="modal-footer">
+      <button id="closeModal">Close</button>
+      <button id="newCollection">New Collection</button>
+    </div>
+  </div>
+</div>
+
+<script src="static/collector.js"></script>
+</body>
+</html>

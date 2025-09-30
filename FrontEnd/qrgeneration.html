@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generation</title>
+<link rel="stylesheet" href="static/qrgeneration.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Packaging QR Code ✅</h1>
+  <p>Scan this QR code to get the Batch ID</p>
+  <p><strong>Batch ID:</strong> <span id="batchIdDisplay"></span></p>
+  <canvas id="qrCode"></canvas>
+  <button id="downloadBtn">Download QR</button>
+  <button id="nextBtn">Next</button> <!-- added Next button -->
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="static/qrgeneration.js"></script>
+</body>
+</html>

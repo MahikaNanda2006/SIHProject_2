@@ -1,0 +1,183 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  background: #f9fafb;
+  color: #222;
+}
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+.user-name {
+  font-weight: bold;
+}
+.points {
+  font-size: 0.9rem;
+  color: #888;
+  margin-left: 0.5rem;
+}
+.btn-link {
+  background: none;
+  border: none;
+  color: #007f5f;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+/* Background */
+.bg-image {
+  background: url('herb-background.jpg') no-repeat center/cover;
+  opacity: 0.15;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 5;
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* QR Scanner */
+.qr-scanner {
+  border: 2px dashed #007f5f;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  background: #f0fff4;
+}
+
+/* Benefits Grid */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.benefit {
+  background: #e6f4ea;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+.benefit-title {
+  font-weight: bold;
+  color: #007f5f;
+}
+.benefit-sub {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.card-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.card-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 9999px;
+  border: 2px solid;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn.green {
+  border-color: #007f5f;
+  color: #007f5f;
+}
+.btn.green:hover {
+  background: #007f5f;
+  color: white;
+}
+.btn.mint {
+  border-color: #38b2ac;
+  color: #38b2ac;
+}
+.btn.mint:hover {
+  background: #38b2ac;
+  color: white;
+}
+.btn.red {
+  border-color: #e53e3e;
+  color: #e53e3e;
+}
+.btn.red:hover {
+  background: #e53e3e;
+  color: white;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Modal */
+.modal {
+  display: none; /* keep hidden by default */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}

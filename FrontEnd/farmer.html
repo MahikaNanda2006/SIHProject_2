@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmer Dashboard</title>
+<link rel="stylesheet" href="static/farmer.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Farmer Dashboard</h1>
+  
+  <input type="file" id="imageInput" accept=".jpg,.jpeg,.png">
+  <button id="uploadBtn">Upload & Generate Batch ID</button>
+  <div id="loading" class="loading">Processing...</div>
+  
+  <div id="uniqueIdContainer">
+    <strong>Unique Batch ID:</strong> <span id="uniqueId"></span>
+  </div>
+  <button id="nextBtn" style="display:none;">Next</button>
+</div>
+
+<script src="static/farmer.js"></script>
+</body>
+</html>

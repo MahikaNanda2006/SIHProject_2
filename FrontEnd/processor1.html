@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Processor 1 Dashboard</title>
+<link rel="stylesheet" href="processor1.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Processor 1 Dashboard</h1>
+  <p class="subtitle">Record processing data and generate unique batch identifier</p>
+
+  <form id="processorForm">
+    <div class="form-group">
+      <label for="parent_batch_id">Parent Batch ID</label>
+      <input type="text" id="parent_batch_id" name="parent_batch_id" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" name="weight" step="0.01" placeholder="Enter weight" required>
+    </div>
+
+    <div class="form-group">
+      <label for="report">Upload Report (PDF)</label>
+      <input type="file" id="report" name="report" accept=".pdf" required>
+    </div>
+
+    <button type="submit" id="generateBtn" disabled>Generate Unique ID</button>
+  </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <h2>Processing Recorded Successfully ✅</h2>
+    <div class="modal-body">
+      <p><strong>Parent Batch ID:</strong> <span id="modalParentBatch"></span></p>
+      <p><strong>Weight:</strong> <span id="modalWeight"></span> kg</p>
+      <p><strong>New Processing Batch ID:</strong> <span id="modalNewBatch"></span></p>
+    </div>
+    <div class="modal-footer">
+      <button id="closeModalBtn">Close</button>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+</div>
+
+<script src="processor1.js"></script>
+</body>
+</html>

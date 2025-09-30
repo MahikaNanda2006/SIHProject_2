@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packaging Dashboard</title>
+<link rel="stylesheet" href="static/packaging.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Packaging Dashboard</h1>
+  <p class="subtitle">Upload packaging report and generate batch ID</p>
+
+  <form id="packagingForm">
+    <div class="form-group">
+      <label for="parent_batch_id">Parent Batch ID</label>
+      <input type="text" id="parent_batch_id" name="parent_batch_id" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="report">Upload Report (PDF)</label>
+      <input type="file" id="report" name="report" accept=".pdf" required>
+    </div>
+
+    <button type="submit" id="generateBtn" disabled>Generate Packaging Batch ID</button>
+  </form>
+</div>
+
+<script src="static/packaging.js"></script>
+</body>
+</html>

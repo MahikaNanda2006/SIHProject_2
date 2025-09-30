@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storage Batch Recorded</title>
+<link rel="stylesheet" href="static/storagebatchID.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Storage Batch Recorded ✅</h1>
+
+  <div class="details">
+    <p><strong>Parent Batch ID:</strong> <span id="parentBatchDisplay"></span></p>
+    <p><strong>New Storage Batch ID:</strong> <span id="newBatchDisplay"></span></p>
+  </div>
+
+  <button id="nextBtn">Next</button>
+</div>
+
+<script>
+  // Get data from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const parentBatchId = urlParams.get('parent_batch_id');
+  const newBatchId = urlParams.get('new_batch_id');
+
+  document.getElementById('parentBatchDisplay').textContent = parentBatchId;
+  document.getElementById('newBatchDisplay').textContent = newBatchId;
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    // Redirect to packaging.html with new storage batch as parent_batch_id
+    window.location.href = `packaging.html?parent_batch_id=${newBatchId}`;
+  });
+</script>
+
+</body>
+</html>

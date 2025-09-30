@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Processing 1 Batch Confirmation</title>
+<link rel="stylesheet" href="static/processor1batchID.css">
+</head>
+<body>
+
+<div class="center-card">
+  <h1>Processing Recorded Successfully ✅</h1>
+  <div class="details">
+    <p><strong>Parent Batch ID:</strong> <span id="parentBatch"></span></p>
+    <p><strong>Weight:</strong> <span id="weight"></span> kg</p>
+    <p><strong>New Processing1 Batch ID:</strong> <span id="newBatchId"></span></p>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const parentBatch = urlParams.get('parent_batch_id');
+  const weight = urlParams.get('weight');
+  const newBatchId = urlParams.get('new_batch_id');
+
+  document.getElementById('parentBatch').textContent = parentBatch;
+  document.getElementById('weight').textContent = weight;
+  document.getElementById('newBatchId').textContent = newBatchId;
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (newBatchId) {
+      window.location.href = `processor2.html?parent_batch_id=${newBatchId}`;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
