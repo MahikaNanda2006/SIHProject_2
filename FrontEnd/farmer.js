@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch('http://localhost:8000/submit/farmer', {
+      const response = await fetch('/submit/farmer', {
         method: 'POST',
         body: formData
       });
