@@ -1,22 +1,35 @@
+import os
 import psycopg2
+import psycopg2.extras
 import asyncpg
 import hashlib
 import json
 from datetime import datetime
 from typing import Optional, Dict, Any
+from dotenv import load_dotenv
 
-# -------- PostgreSQL Config --------
-DB_CONFIG = {
-    "host": "localhost",
-    "port": 5432,
-    "user": "postgres",
-    "password": "Root",
-    "database": "Shrunkhala"
-}
+load_dotenv()  # loads variables from .env
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set. Check your .env file.")
+
+if "localhost" in DATABASE_URL or "127.0.0.1" in DATABASE_URL:
+    conn = psycopg2.connect(DATABASE_URL)
+else:
+    conn = psycopg2.connect(DATABASE_URL, sslmode="require")
 
 # -------- Sync Connection (psycopg2) --------
-conn = psycopg2.connect(**DB_CONFIG)
-cur = conn.cursor()
+
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# If local, remove SSL requirement
+if "localhost" in DATABASE_URL or "127.0.0.1" in DATABASE_URL:
+    conn = psycopg2.connect(DATABASE_URL)
+else:
+    conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+
 
 # -------- Utility: SHA-256 hash --------
 def generate_hash(batch_data: Dict[str, Any]) -> str:
@@ -30,7 +43,7 @@ def read_file_bytes(file_path: Optional[str]) -> Optional[bytes]:
     with open(file_path, "rb") as f:
         return f.read()
 
-# -------- Insert a new batch --------
+# -------- Insert a new batch (sync) --------
 def insert_batch(
     batch_id: str,
     stakeholder: str,
@@ -58,7 +71,7 @@ def insert_batch(
 
     hash_key = generate_hash(batch_data)
 
-    cur.execute(
+    conn.execute(
         """
         INSERT INTO batches (
             batch_id, stakeholder, parent_batch_id,
@@ -77,16 +90,15 @@ def insert_batch(
         )
     )
     conn.commit()
-
     return batch_id, extra_data, hash_key
 
-# -------- Async DB Pool (for FastAPI) --------
+# -------- Async DB Pool (asyncpg) --------
 db_pool: Optional[asyncpg.pool.Pool] = None
 
 async def init_db_pool():
     global db_pool
     if db_pool is None:
-        db_pool = await asyncpg.create_pool(**DB_CONFIG)
+        db_pool = await asyncpg.create_pool(DATABASE_URL, ssl="require")
 
 async def close_db_pool():
     global db_pool
@@ -111,5 +123,4 @@ async def get_record(batch_id: str) -> Optional[Dict[str, Any]]:
             result["extra_data"] = json.loads(extra_data)
         except json.JSONDecodeError:
             result["extra_data"] = {}
-
     return result

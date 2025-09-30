@@ -8,6 +8,10 @@ from BackEnd.api_storage import router as storage_router
 from BackEnd.qrReader2 import router as qr_router
 from database.db_access import init_db_pool, close_db_pool
 from fastapi.middleware.cors import CORSMiddleware
+import os
+from dotenv import load_dotenv
+
+
 
 app = FastAPI()
 
@@ -21,6 +25,9 @@ app.add_middleware(
 )
 
 
+load_dotenv()  # loads .env file
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 
