@@ -8,3 +8,5 @@ python-multipart
 pillow
 requests
 python-dotenv
+pyzbar
+asyncpg
